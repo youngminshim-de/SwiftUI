@@ -10,16 +10,15 @@ import SwiftUI
 struct ContentView: View {
     @State var firstNaviLinkActive = false
     var body: some View {
-//        NavigationView {
-//            NavigationLink(isActive: $firstNaviLinkActive) {
-//                SecondView(firstNaviLinkActive: $firstNaviLinkActive)
-//            } label: {
-//                Text("두번째 View 보기")
-//                    .foregroundColor(.black)
-//            }
-//
-//        }
-        PresentView()
+        NavigationView {
+            NavigationLink(isActive: $firstNaviLinkActive) {
+                SecondView(firstNaviLinkActive: $firstNaviLinkActive)
+            } label: {
+                Text("두번째 View 보기")
+                    .foregroundColor(.black)
+            }
+
+        }
     }
 }
 

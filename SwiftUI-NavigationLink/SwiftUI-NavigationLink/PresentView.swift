@@ -9,16 +9,14 @@ import SwiftUI
 
 struct PresentView: View {
     @State private var isPresenting = false
-    @Environment(\.dismiss) var presentationMode
+    @Environment(\.isPresented) var isPresented
     var body: some View {
         Button {
             isPresenting.toggle()
         } label: {
             Text("Present Full-Screen Cover")
         }
-        .fullScreenCover(isPresented: $isPresenting) {
-            didDismiss()
-        } content: {
+        .fullScreenCover(isPresented: $isPresenting, content: {
             VStack {
                 Text("A Full-screen modal view.")
                     .font(.title)
@@ -34,12 +32,7 @@ struct PresentView: View {
             .frame(maxWidth: .infinity,
                    maxHeight: .infinity)
             .background(.blue)
-        }
-    }
-    
-    func didDismiss() {
-        presentationMode.callAsFunction()
-
+        })
     }
 }
 
